@@ -1,0 +1,851 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|Book-Antiqua-Italic:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="iOS," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="资料来自于https://github.com/AttackOnDobby/iOS-Core-Animation-Advanced-Techniques
+CALayer的概念CALayer类和UIView类似，被层级关系树管理的矩形块，也可以包含一些内容（像图片，文本或者背景色），管理子图层的位置。它们有一些方法和属性用来做动画和变换。和UIView最大的不同是CALayer不处理用户的交互。
+每">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CALayer这个东西">
+<meta property="og:url" content="http://zenzz.xyz/2016/01/22/about-calayer/index.html">
+<meta property="og:site_name" content="God killed himself in 1985">
+<meta property="og:description" content="资料来自于https://github.com/AttackOnDobby/iOS-Core-Animation-Advanced-Techniques
+CALayer的概念CALayer类和UIView类似，被层级关系树管理的矩形块，也可以包含一些内容（像图片，文本或者背景色），管理子图层的位置。它们有一些方法和属性用来做动画和变换。和UIView最大的不同是CALayer不处理用户的交互。
+每">
+<meta property="og:updated_time" content="2016-07-09T04:56:17.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="CALayer这个东西">
+<meta name="twitter:description" content="资料来自于https://github.com/AttackOnDobby/iOS-Core-Animation-Advanced-Techniques
+CALayer的概念CALayer类和UIView类似，被层级关系树管理的矩形块，也可以包含一些内容（像图片，文本或者背景色），管理子图层的位置。它们有一些方法和属性用来做动画和变换。和UIView最大的不同是CALayer不处理用户的交互。
+每">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://zenzz.xyz/2016/01/22/about-calayer/"/>
+
+  <title> CALayer这个东西 | God killed himself in 1985 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-84478617-2', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+  <script type="text/javascript">
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//tajs.qq.com/stats?sId=57269955";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">God killed himself in 1985</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                CALayer这个东西
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-01-22T15:45:32+08:00" content="2016-01-22">
+              2016-01-22
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/01/22/about-calayer/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/01/22/about-calayer/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/01/22/about-calayer/" class="leancloud_visitors" data-flag-title="CALayer这个东西">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>资料来自于<a href="https://github.com/AttackOnDobby/iOS-Core-Animation-Advanced-Techniques" target="_blank" rel="external">https://github.com/AttackOnDobby/iOS-Core-Animation-Advanced-Techniques</a></p>
+<h2 id="CALayer的概念"><a href="#CALayer的概念" class="headerlink" title="CALayer的概念"></a>CALayer的概念</h2><p>CALayer类和UIView类似，被层级关系树管理的矩形块，也可以包含一些内容（像图片，文本或者背景色），管理子图层的位置。它们有一些方法和属性用来做动画和变换。和UIView最大的不同是CALayer不处理用户的交互。</p>
+<p>每一个UIview都有一个CALayer实例的图层属性，也就是所谓的backing layer，视图的职责就是创建并管理这个图层，以确保当子视图在层级关系中添加或者被移除的时候，他们关联的图层也同样对应在层级关系树当中有相同的操作。</p>
+<h2 id="CALayer的属性"><a href="#CALayer的属性" class="headerlink" title="CALayer的属性"></a>CALayer的属性</h2><ul>
+<li>bounds</li>
+<li>position</li>
+<li>zPosition</li>
+<li>anchorPoint</li>
+<li>anchorPoint</li>
+<li>transform</li>
+<li>affineTransform</li>
+<li>frame</li>
+<li>hidden</li>
+<li>geometryFlipped</li>
+<li>contentsAreFlipped</li>
+<li>superLayer</li>
+<li>sublayers</li>
+<li>sublayerTransform</li>
+<li>mask</li>
+<li>masksToBounds</li>
+<li>contents</li>
+<li>contentsRect</li>
+<li>contentsGravity</li>
+<li>contentsScale</li>
+<li>contentsCenter</li>
+<li>minificationFilter</li>
+<li>magnificationFilter</li>
+<li>minificationFilterBias</li>
+<li>opaque</li>
+<li>needsDisplayOnBoundsChange</li>
+<li>drawsAsynchronously</li>
+<li>edgeAntialiasingMask</li>
+<li>allowsEdgeAntialiasing</li>
+<li>backgroundColor</li>
+<li>cornerRadius</li>
+<li>borderWidth</li>
+<li>borderColor</li>
+<li>opacity</li>
+<li>allowsGroupOpacity</li>
+<li>compositingFilter</li>
+<li>filters</li>
+<li>backgroundFilters</li>
+<li>shouldRasterize</li>
+<li>rasterizationScale</li>
+<li>shadowColor</li>
+<li>shadowOpacity</li>
+<li>shadowOffset</li>
+<li>shadowRadius</li>
+<li>shadowPath</li>
+<li>actions</li>
+<li>name</li>
+<li>delegate</li>
+<li>style</li>
+</ul>
+<h2 id="系统库提供Layer"><a href="#系统库提供Layer" class="headerlink" title="系统库提供Layer"></a>系统库提供Layer</h2><h3 id="CAShapeLayer"><a href="#CAShapeLayer" class="headerlink" title="CAShapeLayer"></a>CAShapeLayer</h3><p>CAShapeLayer是一个通过矢量图形而不是bitmap来绘制的图层子类。<br>    ​<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">   UIBezierPath *path = [UIBezierPath bezierPath];</div><div class="line">[path moveToPoint:CGPointMake(<span class="number">100</span>, <span class="number">100</span>)];</div><div class="line">[path addLineToPoint:CGPointMake(<span class="number">200</span>, <span class="number">200</span>)];</div><div class="line">[path addLineToPoint:CGPointMake(<span class="number">100</span>, <span class="number">300</span>)];</div><div class="line">[path addLineToPoint:CGPointMake(<span class="number">300</span>, <span class="number">400</span>)];</div><div class="line">[path closePath];</div><div class="line">CAShapeLayer *shapeLayer = [CAShapeLayer layer];</div><div class="line">shapeLayer.strokeColor = [UIColor greenColor].CGColor;</div><div class="line">shapeLayer.lineWidth = <span class="number">2.0</span>;</div><div class="line">shapeLayer.lineCap = kCALineCapRound;</div><div class="line">shapeLayer.lineJoin = kCALineJoinRound;</div><div class="line">shapeLayer.path = path.CGPath;</div><div class="line">[self.containerView.layer addSublayer:shapeLayer];</div><div class="line">[shapeLayer removeFromSuperlayer];</div><div class="line">CGSize rad = CGSizeMake(<span class="number">20</span>, <span class="number">20</span>);</div><div class="line">UIRectCorner corner = UIRectCornerBottomLeft | UIRectCornerBottomRight;</div><div class="line">path = [UIBezierPath bezierPathWithRoundedRect:self.containerView.frame byRoundingCorners:corner cornerRadii:rad];</div><div class="line">[self.containerView.layer addSublayer:shapeLayer];</div><div class="line">​</div></pre></td></tr></table></figure></p>
+<h3 id="CATextLayer"><a href="#CATextLayer" class="headerlink" title="CATextLayer"></a>CATextLayer</h3><p>在图层中显示文字的Layer。CATextLayer以图层的形式包含了UILabel几乎所有的绘制特性，并且额外提供了一些新的特性。<br>可以使用NSAttributedString实现富文本效果。<br>    ​<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line">   CATextLayer *textLayer = [CATextLayer layer];</div><div class="line">textLayer.frame = CGRectMake(<span class="number">0</span>, <span class="number">100</span>, <span class="number">320</span>, <span class="number">450</span>);</div><div class="line">textLayer.foregroundColor = [UIColor greenColor].CGColor;</div><div class="line">textLayer.alignmentMode = kCAAlignmentCenter;</div><div class="line">textLayer.wrapped = YES;</div><div class="line">UIFont *font = [UIFont systemFontOfSize:<span class="number">30</span>];</div><div class="line">CFStringRef stringRef = (__bridge CFStringRef) font.fontName;</div><div class="line">CGFontRef fontRef = CGFontCreateWithFontName(stringRef);</div><div class="line">textLayer.font = fontRef;</div><div class="line">textLayer.fontSize = font.pointSize;</div><div class="line">CGFontRelease(fontRef);</div><div class="line">CFRelease(fontRef);</div><div class="line">textLayer.<span class="built_in">string</span> = @<span class="string">"this is test message!"</span>;</div><div class="line">textLayer.contentsScale = [UIScreen mainScreen].scale;</div><div class="line">[self.view.layer addSublayer:textLayer];</div><div class="line"><span class="comment">//富文本效果</span></div><div class="line">NSString *<span class="built_in">string</span> = @<span class="string">"Lorem ipsum dolor sit amet, consecteture adipiscing elit. Quisque massa arcu, eleifend vel varius in, facilisis pulvinar leo. Nunc quis nunc at mauris pharetra condimentum ut ac neque. Nunc elementum, libero ut porttitor dictum, diam odio congue lacus, vel fringilla sapien diam at purus. Etiam suscipit pretium nunc sit amet lobortis"</span>;</div><div class="line">NSMutableAttributedString *attrString = [[NSMutableAttributedString alloc] initWithString:<span class="built_in">string</span>];</div><div class="line">UIFont *font = [UIFont systemFontOfSize:<span class="number">15.0</span>];</div><div class="line">CFStringRef stringRef = (__bridge CFStringRef)font.fontName;</div><div class="line">CTFontRef fontRef = CTFontCreateWithName(stringRef, font.pointSize, <span class="literal">NULL</span>);</div><div class="line">NSDictionary *attrDic = @&#123;</div><div class="line">                          (__bridge id)kCTForegroundColorAttributeName : (__bridge id)[UIColor lightTextColor].CGColor,</div><div class="line">                          (__bridge id)kCTFontAttributeName : (__bridge id)fontRef</div><div class="line">                          &#125;;</div><div class="line">[attrString setAttributes:attrDic range:NSMakeRange(<span class="number">0</span>, <span class="built_in">string</span>.length)];</div><div class="line">attrDic = @&#123;</div><div class="line">            (__bridge id)kCTForegroundColorAttributeName : (__bridge id)[UIColor redColor].CGColor,</div><div class="line">            (__bridge id)kCTUnderlineStyleAttributeName : @(kCTUnderlineStyleSingle),</div><div class="line">            (__bridge id)kCTFontAttributeName : (__bridge id)fontRef</div><div class="line">            &#125;;</div><div class="line">[attrString addAttributes:attrDic range:NSMakeRange(<span class="number">6</span>, <span class="number">5</span>)];</div><div class="line">CFRelease(fontRef);</div><div class="line">textLayer.<span class="built_in">string</span> = attrString;</div><div class="line">textLayer.contentsScale = [UIScreen mainScreen].scale;</div><div class="line">[self.view.layer addSublayer:textLayer];</div><div class="line">​</div></pre></td></tr></table></figure></p>
+<h3 id="CAGradientLayer"><a href="#CAGradientLayer" class="headerlink" title="CAGradientLayer"></a>CAGradientLayer</h3><p>CAGradientLayer是用来生成两种或更多颜色平滑渐变的。<br>    ​<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">   CAGradientLayer *gradiengLayer = [CAGradientLayer layer];</div><div class="line">gradiengLayer.colors = @[(__bridge id)[UIColor whiteColor].CGColor, (__bridge id)[UIColor redColor].CGColor, (__bridge id)[UIColor greenColor].CGColor, (__bridge id)[UIColor grayColor].CGColor];</div><div class="line">gradiengLayer.frame = CGRectMake(<span class="number">20</span>, <span class="number">20</span>, <span class="number">200</span>, <span class="number">200</span>);</div><div class="line">gradiengLayer.startPoint = CGPointMake(<span class="number">0</span>, <span class="number">0</span>);</div><div class="line">gradiengLayer.endPoint = CGPointMake(<span class="number">1</span>, <span class="number">1</span>);</div><div class="line">gradiengLayer.locations = @[@<span class="number">0.10</span>, @<span class="number">0.35</span>, @<span class="number">0.64</span>];</div><div class="line">[self.view.layer addSublayer:gradiengLayer];</div><div class="line">​</div></pre></td></tr></table></figure></p>
+<h3 id="CAReplicatorLayer"><a href="#CAReplicatorLayer" class="headerlink" title="CAReplicatorLayer"></a>CAReplicatorLayer</h3><p>CAReplicatorLayer的目的是为了高效生成许多相似的图层。它会绘制一个或多个图层的子图层，并在每个复制体上应用不同的变换。<br>    ​<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">   CAReplicatorLayer *replicatorLayer = [CAReplicatorLayer layer];</div><div class="line">replicatorLayer.instanceCount = <span class="number">2</span>;</div><div class="line">replicatorLayer.frame = CGRectMake(<span class="number">20</span>, <span class="number">20</span>, <span class="number">200</span>, <span class="number">200</span>);</div><div class="line">CATransform3D transform = CATransform3DIdentity;</div><div class="line">transform = CATransform3DTranslate(transform, <span class="number">0</span>, replicatorLayer.bounds.size.height + <span class="number">2</span>, <span class="number">0</span>);</div><div class="line">replicatorLayer.instanceTransform = transform;</div><div class="line">replicatorLayer.instanceAlphaOffset = <span class="number">0.6</span>;</div><div class="line">[self.view.layer addSublayer:replicatorLayer];</div><div class="line">​</div></pre></td></tr></table></figure></p>
+<h3 id="CATiledLayer"><a href="#CATiledLayer" class="headerlink" title="CATiledLayer"></a>CATiledLayer</h3><p>有些时候你可能需要绘制一个很大的图片，常见的例子就是一个高像素的照片或者是地球表面的详细地图。iOS应用通畅运行在内存受限的设备上，所以读取整个图片到内存中是不明智的。载入大图可能会相当地慢，那些对你看上去比较方便的做法（在主线程调用UIImage的-imageNamed:方法或者-imageWithContentsOfFile:方法）将会阻塞你的用户界面，至少会引起动画卡顿现象。</p>
+<p>能高效绘制在iOS上的图片也有一个大小限制。所有显示在屏幕上的图片最终都会被转化为OpenGL纹理，同时OpenGL有一个最大的纹理尺寸（通常是2048*2048，或4096*4096，这个取决于设备型号）。如果你想在单个纹理中显示一个比这大的图，即便图片已经存在于内存中了，你仍然会遇到很大的性能问题，因为Core Animation强制用CPU处理图片而不是更快的GPU（见第12章『速度的曲调』，和第13章『高效绘图』，它更加详细地解释了软件绘制和硬件绘制）。</p>
+<p>CATiledLayer为载入大图造成的性能问题提供了一个解决方案：将大图分解成小片然后将他们单独按需载入。让我们用实验来证明一下。<br>    ​<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">CATiledLayer *tileLayer = [CATiledLayer layer];</div><div class="line">tileLayer.frame = CGRectMake(<span class="number">0</span>, <span class="number">0</span>, <span class="number">2048</span>, <span class="number">2048</span>);</div><div class="line">tileLayer.delegate = self;</div><div class="line">[self.view.layer addSublayer:tileLayer];</div><div class="line">[tileLayer setNeedsDisplay];</div><div class="line">​</div></pre></td></tr></table></figure></p>
+<h3 id="CAScrollLayer"><a href="#CAScrollLayer" class="headerlink" title="CAScrollLayer"></a>CAScrollLayer</h3><p>对于一个未转换的图层，它的bounds和它的frame是一样的，frame属性是由bounds属性自动计算而出的，所以更改任意一个值都会更新其他值。在图层中等价于UIScrollView和UITableView。</p>
+<h3 id="CAEmitterLayer"><a href="#CAEmitterLayer" class="headerlink" title="CAEmitterLayer"></a>CAEmitterLayer</h3><p>CAEmitterLayer是一个高性能的粒子引擎，被用来创建实时例子动画如：烟雾，火，雨等等这些效果。<br>    ​<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">	CAEmitterLayer *emlayer = [CAEmitterLayer layer];</div><div class="line">	emlayer.frame = CGRectMake(<span class="number">120</span>, <span class="number">120</span>, <span class="number">200</span>, <span class="number">200</span>);</div><div class="line">	[self.view.layer addSublayer:emlayer];</div><div class="line">	emlayer.renderMode = kCAEmitterLayerAdditive;</div><div class="line">	emlayer.emitterPosition = CGPointMake(emlayer.frame.size.width / <span class="number">2.0</span>, emlayer.frame.size.height / <span class="number">2.0</span>);</div><div class="line">	CAEmitterCell *cell = [[CAEmitterCell alloc] init];</div><div class="line">	cell.contents = (__bridge id)[UIImage imageNamed:@<span class="string">"bear"</span>].CGImage;</div><div class="line"><span class="comment">//    cell.color = [UIColor colorWithWhite:0.8 alpha:0.33].CGColor;</span></div><div class="line">    cell.birthRate = <span class="number">200</span>;</div><div class="line">    cell.lifetime = <span class="number">3.0</span>;</div><div class="line">    cell.alphaSpeed = <span class="number">-0.3</span>;</div><div class="line">    cell.velocity = <span class="number">50.0</span>;</div><div class="line">    cell.velocityRange = <span class="number">50.0</span>;</div><div class="line">    cell.emissionRange = M_PI * <span class="number">2.0</span>;</div><div class="line">    emlayer.emitterCells = @[cell];</div><div class="line">    ​</div></pre></td></tr></table></figure></p>
+<h3 id="CAEAGLLayer"><a href="#CAEAGLLayer" class="headerlink" title="CAEAGLLayer"></a>CAEAGLLayer</h3><p>基于OpenGL实现的Layer，可实现高性能图像绘制，用起来复杂。</p>
+<h3 id="AVPlayerLayer"><a href="#AVPlayerLayer" class="headerlink" title="AVPlayerLayer"></a>AVPlayerLayer</h3><p>AVPlayerLayer不是Core Animation框架的一部分（AV前缀看上去像），AVPlayerLayer是有别的框架（AVFoundation）提供的，它和Core Animation紧密地结合在一起，提供了一个CALayer子类来显示自定义的内容类型。</p>
+<p>AVPlayerLayer是用来在iOS上播放视频的。他是高级接口例如MPMoivePlayer的底层实现，提供了显示视频的底层控制。AVPlayerLayer的使用相当简单：你可以用+playerLayerWithPlayer:方法创建一个已经绑定了视频播放器的图层，或者你可以先创建一个图层，然后用player属性绑定一个AVPlayer实例。<br>    ​<figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">   NSString *urlString = [[NSBundle mainBundle] pathForResource:@<span class="string">"loadfile"</span> ofType:@<span class="string">"mp4"</span>];</div><div class="line">NSURL *videoUrl = [NSURL fileURLWithPath:urlString];</div><div class="line">AVPlayer *player = [AVPlayer playerWithURL:videoUrl];</div><div class="line">AVPlayerLayer *playerLayer = [AVPlayerLayer playerLayerWithPlayer:player];</div><div class="line">playerLayer.frame = CGRectMake(<span class="number">20</span>, <span class="number">20</span>, <span class="number">300</span>, <span class="number">200</span>);</div><div class="line">playerLayer.backgroundColor = [UIColor redColor].CGColor;</div><div class="line">playerLayer.videoGravity = AVLayerVideoGravityResizeAspectFill;</div><div class="line">CATransform3D transform = CATransform3DIdentity;</div><div class="line">transform.m34 = <span class="number">-1.0</span> / <span class="number">500.0</span>;</div><div class="line">transform = CATransform3DRotate(transform, M_PI_4, <span class="number">1</span>, <span class="number">1</span>, <span class="number">0</span>);</div><div class="line">playerLayer.transform = transform;</div><div class="line">playerLayer.cornerRadius = <span class="number">3.0</span>;</div><div class="line">[self.view.layer addSublayer:playerLayer];</div><div class="line">[player play];</div><div class="line">​</div></pre></td></tr></table></figure></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/iOS/" rel="tag">#iOS</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/01/17/runloop/" rel="next" title="Runloop">
+                <i class="fa fa-chevron-left"></i> Runloop
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/02/29/about-swift-part1/" rel="prev" title="Swift皮毛点点-Part1">
+                Swift皮毛点点-Part1 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <div class="ds-share flat" data-thread-key="2016/01/22/about-calayer/"
+     data-title="CALayer这个东西"
+     data-content=""
+     data-url="http://zenzz.xyz/2016/01/22/about-calayer/">
+  <div class="ds-share-inline">
+    <ul  class="ds-share-icons-16">
+
+      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+
+    </ul>
+    <div class="ds-share-icons-more">
+    </div>
+  </div>
+</div>
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/01/22/about-calayer/"
+           data-title="CALayer这个东西" data-url="http://zenzz.xyz/2016/01/22/about-calayer/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="https://avatars0.githubusercontent.com/u/14866444?v=3&s=460"
+               alt="王小禅" />
+          <p class="site-author-name" itemprop="name">王小禅</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">15</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/zenzzy" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/zzenzzy" target="_blank" title="Twitter">
+                  
+                    <i class="fa fa-fw fa-twitter"></i>
+                  
+                  Twitter
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#CALayer的概念"><span class="nav-number">1.</span> <span class="nav-text">CALayer的概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CALayer的属性"><span class="nav-number">2.</span> <span class="nav-text">CALayer的属性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#系统库提供Layer"><span class="nav-number">3.</span> <span class="nav-text">系统库提供Layer</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#CAShapeLayer"><span class="nav-number">3.1.</span> <span class="nav-text">CAShapeLayer</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CATextLayer"><span class="nav-number">3.2.</span> <span class="nav-text">CATextLayer</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CAGradientLayer"><span class="nav-number">3.3.</span> <span class="nav-text">CAGradientLayer</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CAReplicatorLayer"><span class="nav-number">3.4.</span> <span class="nav-text">CAReplicatorLayer</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CATiledLayer"><span class="nav-number">3.5.</span> <span class="nav-text">CATiledLayer</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CAScrollLayer"><span class="nav-number">3.6.</span> <span class="nav-text">CAScrollLayer</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CAEmitterLayer"><span class="nav-number">3.7.</span> <span class="nav-text">CAEmitterLayer</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CAEAGLLayer"><span class="nav-number">3.8.</span> <span class="nav-text">CAEAGLLayer</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#AVPlayerLayer"><span class="nav-number">3.9.</span> <span class="nav-text">AVPlayerLayer</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">王小禅</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"zenzz"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    <script src="/vendors/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("70GafIzL4fdfoD4QQoY5QcTr-gzGzoHsz", "Ow1lqk43ebfYLulXvuMmFtks");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+</body>
+</html>
