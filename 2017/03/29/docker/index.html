@@ -74,7 +74,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Python," />
+  <meta name="keywords" content="nginx," />
 
 
 
@@ -90,31 +90,31 @@
 
 
 
-<meta name="description" content="一、环境gcc 4.2.1
-python 3.5
-macOS 10.12
-Xcode8
-二、操作在安装Scpray模块过程中，安装Twisted出现意外
-12345fatal error: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/lipo: can&amp;apos;t f">
+<meta name="description" content="安装服务器：Ubuntu 16.04
+参考：https://store.docker.com/editions/community/docker-ce-server-ubuntu?tab=description
+
+安装依赖
+1234sudo apt-get -y install \  apt-transport-https \  ca-certificates \  curl
+1curl -fsS">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Twisted安装失败">
-<meta property="og:url" content="http://zenzz.xyz/2016/10/16/twisted-install-error/index.html">
+<meta property="og:title" content="Docker使用小记">
+<meta property="og:url" content="http://zenzz.xyz/2017/03/29/docker/index.html">
 <meta property="og:site_name" content="God killed himself in 1985">
-<meta property="og:description" content="一、环境gcc 4.2.1
-python 3.5
-macOS 10.12
-Xcode8
-二、操作在安装Scpray模块过程中，安装Twisted出现意外
-12345fatal error: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/lipo: can&amp;apos;t f">
-<meta property="og:updated_time" content="2016-10-16T05:05:18.000Z">
+<meta property="og:description" content="安装服务器：Ubuntu 16.04
+参考：https://store.docker.com/editions/community/docker-ce-server-ubuntu?tab=description
+
+安装依赖
+1234sudo apt-get -y install \  apt-transport-https \  ca-certificates \  curl
+1curl -fsS">
+<meta property="og:updated_time" content="2017-03-29T06:02:41.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Twisted安装失败">
-<meta name="twitter:description" content="一、环境gcc 4.2.1
-python 3.5
-macOS 10.12
-Xcode8
-二、操作在安装Scpray模块过程中，安装Twisted出现意外
-12345fatal error: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/lipo: can&amp;apos;t f">
+<meta name="twitter:title" content="Docker使用小记">
+<meta name="twitter:description" content="安装服务器：Ubuntu 16.04
+参考：https://store.docker.com/editions/community/docker-ce-server-ubuntu?tab=description
+
+安装依赖
+1234sudo apt-get -y install \  apt-transport-https \  ca-certificates \  curl
+1curl -fsS">
 
 
 
@@ -135,9 +135,9 @@ Xcode8
 
 
 
-  <link rel="canonical" href="http://zenzz.xyz/2016/10/16/twisted-install-error/"/>
+  <link rel="canonical" href="http://zenzz.xyz/2017/03/29/docker/"/>
 
-  <title> Twisted安装失败 | God killed himself in 1985 </title>
+  <title> Docker使用小记 | God killed himself in 1985 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -285,7 +285,7 @@ Xcode8
             
             
               
-                Twisted安装失败
+                Docker使用小记
               
             
           </h1>
@@ -297,8 +297,8 @@ Xcode8
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-10-16T13:00:13+08:00" content="2016-10-16">
-              2016-10-16
+            <time itemprop="dateCreated" datetime="2017-03-29T11:38:20+08:00" content="2017-03-29">
+              2017-03-29
             </time>
           </span>
 
@@ -308,8 +308,8 @@ Xcode8
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/10/16/twisted-install-error/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/10/16/twisted-install-error/" itemprop="commentsCount"></span>
+                <a href="/2017/03/29/docker/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/29/docker/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -319,7 +319,7 @@ Xcode8
 
           
           
-             <span id="/2016/10/16/twisted-install-error/" class="leancloud_visitors" data-flag-title="Twisted安装失败">
+             <span id="/2017/03/29/docker/" class="leancloud_visitors" data-flag-title="Docker使用小记">
                &nbsp; | &nbsp;
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -341,13 +341,46 @@ Xcode8
       
 
       
-        <h2 id="一、环境"><a href="#一、环境" class="headerlink" title="一、环境"></a>一、环境</h2><p>gcc 4.2.1</p>
-<p>python 3.5</p>
-<p>macOS 10.12</p>
-<p>Xcode8</p>
-<h2 id="二、操作"><a href="#二、操作" class="headerlink" title="二、操作"></a>二、操作</h2><p>在安装Scpray模块过程中，安装Twisted出现意外</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">fatal error: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/lipo: can&apos;t figure out the architecture type of: /var/tmp//ccaCh0T7.out</div><div class="line">    error: command &apos;gcc-4.2&apos; failed with exit status 1</div><div class="line"></div><div class="line">    ----------------------------------------</div><div class="line">Command &quot;/Users/zenzz/py3.5env/bin/python3.5 -u -c &quot;import setuptools, tokenize;__file__=&apos;/private/tmp/pip-build-e2dxz698/Twisted/setup.py&apos;;exec(compile(getattr(tokenize, &apos;open&apos;, open)(__file__).read().replace(&apos;\r\n&apos;, &apos;\n&apos;), __file__, &apos;exec&apos;))&quot; install --record /tmp/pip-khg4qz7u-record/install-record.txt --single-version-externally-managed --compile --install-headers /Users/zenzz/py3.5env/bin/../include/site/python3.5/Twisted&quot; failed with error code 1 in /private/tmp/pip-build-e2dxz698/Twisted/</div></pre></td></tr></table></figure>
-<h2 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h2><p>暂未解决</p>
+        <h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><p>服务器：Ubuntu 16.04</p>
+<p>参考：<a href="https://store.docker.com/editions/community/docker-ce-server-ubuntu?tab=description" target="_blank" rel="external">https://store.docker.com/editions/community/docker-ce-server-ubuntu?tab=description</a></p>
+<ol>
+<li><p>安装依赖</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">sudo apt-get -y install \</div><div class="line">  apt-transport-https \</div><div class="line">  ca-certificates \</div><div class="line">  curl</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -</div></pre></td></tr></table></figure>
+<p>​</p>
+</li>
+<li><p>设置Docker CE的软件源</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">sudo add-apt-repository \</div><div class="line">       &quot;deb [arch=amd64] https://download.docker.com/linux/ubuntu \</div><div class="line">       $(lsb_release -cs) \</div><div class="line">       stable&quot;</div></pre></td></tr></table></figure>
+</li>
+<li><p>安装Docker</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo apt-get -y install docker-ce</div></pre></td></tr></table></figure>
+<p>​</p>
+</li>
+<li><p>测试Docker</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo docker run hello-world</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h1 id="服务挂载"><a href="#服务挂载" class="headerlink" title="服务挂载"></a>服务挂载</h1><p>服务在Docker里就是Container的概念，一个服务就是一个Container，Container镜像来源有两种：Docker Hub,自己build。</p>
+<ol>
+<li><p>从Docker Hub安装</p>
+<p>使用<code>docker pull [image]</code>拉取到本地，再使用<code>docker run</code>跑起服务。</p>
+</li>
+<li><p><code>docker build</code></p>
+<p>创建一个名为<code>Dockerfile</code>的文件，设置好配置项，使用<code>docker build</code>可以生成镜像，生成的镜像可以通过<code>docker images</code>查看。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">REPOSITORY                        TAG                 IMAGE ID            CREATED             SIZE</div><div class="line">zenzz.xyz                         latest              a90cd8da6bf3        12 hours ago        670 MB</div><div class="line">nginx                             latest              5e69fe4b3c31        32 hours ago        183 MB</div><div class="line">node                              boron               2ed333b7d30b        6 days ago          661 MB</div></pre></td></tr></table></figure>
+<p>​</p>
+<p>​</p>
+</li>
+</ol>
+<h1 id="Nginx反向代理配置"><a href="#Nginx反向代理配置" class="headerlink" title="Nginx反向代理配置"></a>Nginx反向代理配置</h1><p>在这个问题上，我折腾有点久。改过/etc/nginx/nginx.conf，依然没效果。</p>
+<p><code>find / -name nginx.conf</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">/etc/init/nginx.conf</div><div class="line">/var/lib/docker/aufs/diff/c4417f8663947b38df87388cb615b6d58edb8ed1bbe39b17a21c5a719ea478d6/etc/nginx/nginx.conf</div><div class="line">/var/lib/docker/aufs/mnt/8c23e114b726f7378c854ab3b0afa056d148273dfd9c0266703b4751803c2847/etc/nginx/nginx.conf</div></pre></td></tr></table></figure>
+<p>发现Nginx读的是沙盒里的配置文件。</p>
+<p>然后我在conf.d目录下增加zenzz.conf：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">server &#123;</div><div class="line">    listen       80;</div><div class="line">    server_name www.zenzz.xyz zenzz.xyz;</div><div class="line">    location / &#123;</div><div class="line">       proxy_pass http://docker_ip:8008;</div><div class="line">      &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>docker_ip就是docker的IP地址，必须是docker的IP，用localhost不行。</p>
+<p>我这边跑docker的完整命令是<code>docker run -it --name nginx -p 80:80 --link zen:zen -d nginx</code>。zen是应用Container的名字。</p>
+<p>That’s all.</p>
 
       
     </div>
@@ -370,7 +403,7 @@ Xcode8
       
         <div class="post-tags">
           
-            <a href="/tags/Python/" rel="tag">#Python</a>
+            <a href="/tags/nginx/" rel="tag">#nginx</a>
           
         </div>
       
@@ -379,17 +412,13 @@ Xcode8
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/09/07/clang-error-segmentation-fault-11/" rel="next" title="clang-error:Segmentation-fault-11">
-                <i class="fa fa-chevron-left"></i> clang-error:Segmentation-fault-11
+              <a href="/2017/01/29/plan-in-2017/" rel="next" title="2017年计划">
+                <i class="fa fa-chevron-left"></i> 2017年计划
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/10/28/cocoapods-non-modular-error/" rel="prev" title="cocoapods-non-modular-error">
-                cocoapods-non-modular-error <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -404,10 +433,10 @@ Xcode8
 
     <div class="post-spread">
       
-        <div class="ds-share flat" data-thread-key="2016/10/16/twisted-install-error/"
-     data-title="Twisted安装失败"
+        <div class="ds-share flat" data-thread-key="2017/03/29/docker/"
+     data-title="Docker使用小记"
      data-content=""
-     data-url="http://zenzz.xyz/2016/10/16/twisted-install-error/">
+     data-url="http://zenzz.xyz/2017/03/29/docker/">
   <div class="ds-share-inline">
     <ul  class="ds-share-icons-16">
 
@@ -434,8 +463,8 @@ Xcode8
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/10/16/twisted-install-error/"
-           data-title="Twisted安装失败" data-url="http://zenzz.xyz/2016/10/16/twisted-install-error/">
+      <div class="ds-thread" data-thread-key="2017/03/29/docker/"
+           data-title="Docker使用小记" data-url="http://zenzz.xyz/2017/03/29/docker/">
       </div>
     
   </div>
@@ -539,7 +568,7 @@ Xcode8
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、环境"><span class="nav-number">1.</span> <span class="nav-text">一、环境</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、操作"><span class="nav-number">2.</span> <span class="nav-text">二、操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解决办法"><span class="nav-number">3.</span> <span class="nav-text">解决办法</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#安装"><span class="nav-number">1.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#服务挂载"><span class="nav-number">2.</span> <span class="nav-text">服务挂载</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Nginx反向代理配置"><span class="nav-number">3.</span> <span class="nav-text">Nginx反向代理配置</span></a></li></ol></div>
             
           </div>
         </section>
